@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <!-- GENERATED WITH OTRS::OPM::Maker::Command::sopm (1.4) -->
+    <Name>ChangeArticleCustomerVisibility</Name>
+    <Version>6.0.1</Version>
+    <Framework>6.0.x</Framework>
+    <Vendor>Perl-Services.de</Vendor>
+    <URL>http://www.perl-services.de</URL>
+    <Description Lang="de">Sichtbarkeit für Kunden von Artikeln ändern.</Description>
+    <Description Lang="en">Change visibility of articles for customers.</Description>
+    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
+    <Filelist>
+        <File Permission="644" Location="Custom/Kernel/Modules/AgentTicketChangeArticleCustomerVisibility.pm" />
+        <File Permission="644" Location="Custom/Kernel/Output/HTML/FilterElementPost/ChangeArticleCustomerVisibility.pm" />
+        <File Permission="644" Location="Custom/Kernel/Output/HTML/Templates/Standard/AgentTicketChangeArticleCustomerVisibility.tt" />
+        <File Permission="644" Location="Kernel/Config/Files/XML/ChangeArticleCustomerVisibility.xml" />
+        <File Permission="644" Location="Kernel/Language/de_ChangeArticleCustomerVisibility.pm" />
+        <File Permission="644" Location="doc/ChangeArticleCustomerVisibility.json" />
+    </Filelist>
+</otrs_package>
