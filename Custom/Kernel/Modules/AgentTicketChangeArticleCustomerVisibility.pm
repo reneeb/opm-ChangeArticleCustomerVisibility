@@ -194,7 +194,6 @@ sub Run {
                 Value              => $DynamicFieldData{Value}->{$Name},
                 UserID             => $Self->{UserID},
             );
-Kernel::LOG( "$Name -> SUCCESS : " . $Success );
         }
 
         if ( $Success ) {
