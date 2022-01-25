@@ -73,4 +73,13 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="DynamicFieldScreens###ChangeArticleCustomerVisibility" Required="1" Valid="1">
+        <Description Translatable="1">This configuration defines all possible screens to enable or disable dynamic fields.</Description>
+        <Navigation>Frontend::Base::DynamicFieldScreens</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Ticket::Frontend::AgentTicketChangeArticleCustomerVisibility###DynamicField">AgentTicketChangeArticleCustomerVisibility</Item>
+            </Hash>
+        </Value>
+    </Setting>
 </otrs_config>
