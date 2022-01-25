@@ -174,12 +174,41 @@ sub Run {
 
     $GetParam{DynamicField} = \%DynamicFieldACLParameters;
 
+    my $Backend = $ArticleObject->BackendForArticle(
+        TicketID  => $GetParam{TicketID},
+        ArticleID => $GetParam{ArticleID},
+    );
+
+    my %Article = $Backend->ArticleGet(
+        TicketID      => $GetParam{TicketID},
+        ArticleID     => $GetParam{ArticleID},
+        DynamicFields => 1,
+    );
+
     if ( $Self->{Subaction} eq 'ChangeVisibility' && $GetParam{ArticleID} && !%DynamicFieldError ) {
-        my $SQL     = 'UPDATE article SET is_visible_for_customer = ? WHERE id = ?';
-        my $Success = $DBObject->Do(
-            SQL  => $SQL,
-            Bind => [ \$GetParam{IsVisibleForCustomer}, \$GetParam{ArticleID} ],
-        );
+        my $Key               = 'IsVisibleForCustomer';
+        my $VisibilityChanged = ( $GetParam{$Key} == $Article{$Key} ) ? 0 : 1;
+        my $Success           = $VisibilityChanged ? 0 : 1;
+
+        if ( $VisibilityChanged ) {
+            my $SQL     = 'UPDATE article SET is_visible_for_customer = ? WHERE id = ?';
+            $Success = $DBObject->Do(
+                SQL  => $SQL,
+                Bind => [ \$GetParam{$Key}, \$GetParam{ArticleID} ],
+            );
+
+            if ( $Success ) {
+                my $OnOff = $GetParam{$Key} ? 'on' : 'off';
+
+                $TicketObject->HistoryAdd(
+                    Name         => ( sprintf "Switched %s customer visibility", $OnOff ),
+                    HistoryType  => 'Misc',
+                    TicketID     => $GetParam{TicketID},
+                    ArticleID    => $GetParam{ArticleID},
+                    CreateUserID => $Self->{UserID},
+                );
+            }
+        }
 
         DYNAMICFIELD:
         for my $DynamicFieldConfig ( @{$DynamicField} ) {
@@ -240,17 +269,6 @@ sub Run {
             NoCache     => 1,
         );
     }
-
-    my $Backend = $ArticleObject->BackendForArticle(
-        TicketID  => $GetParam{TicketID},
-        ArticleID => $GetParam{ArticleID},
-    );
-
-    my %Article = $Backend->ArticleGet(
-        TicketID      => $GetParam{TicketID},
-        ArticleID     => $GetParam{ArticleID},
-        DynamicFields => 1,
-    );
 
     # Dynamic fields
     DYNAMICFIELD:
