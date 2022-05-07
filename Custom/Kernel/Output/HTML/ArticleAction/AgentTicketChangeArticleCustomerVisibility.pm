@@ -1,5 +1,5 @@
 # --
-# Copyright (C) 2022 Perl-Services.de, https://perl-services.de
+# Copyright (C) 2022 - 2022 Perl-Services.de, https://perl-services.de
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
