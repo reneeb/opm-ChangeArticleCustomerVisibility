@@ -37,7 +37,7 @@ sub Run {
 
     my @ArticleIDs = ${ $Param{Data} } =~ m{<a \s name="Article(\d+)"}xms;
 
-    ${ $Param{Data} } =~ s{ ( <a \s name="Article(\d+)" .*? <ul \s class="Actions"> ) \s+ <li>}{$1 . $Self->__Linkify( $Baselink, $TicketID, $2, $Title ) . '<li>';}exmsg;
+    ${ $Param{Data} } =~ s{ ( <a \s name="Article(\d+)" .*? <ul \s class="Actions"> ) \s* <li[^>]*?>}{$1 . $Self->__Linkify( $Baselink, $TicketID, $2, $Title ) . '<li>';}exmsg;
 
     return 1;
 }
