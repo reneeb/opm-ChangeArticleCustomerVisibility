@@ -1,19 +1,23 @@
 {
     "name": "ChangeArticleCustomerVisibility",
-    "version": "6.0.4",
+    "version": "6.0.5",
     "framework": [
         "6.0.x",
         "6.1.x",
         "6.2.x",
-        "6.3.x"
+        "6.3.x",
+        "6.4.x"
     ],
     "vendor": {
         "name":  "Perl-Services.de",
-        "url": "http://www.perl-services.de"
+        "url": "https://www.perl-services.de"
     },
     "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007",
     "description" : {
         "en": "Change visibility of articles for customers.",
         "de": "Sichtbarkeit für Kunden von Artikeln ändern."
-    }
+    },
+    "exclude_files" : [
+        "doc/ChangeArticleCustomerVisibility.json"
+    ]
 }
