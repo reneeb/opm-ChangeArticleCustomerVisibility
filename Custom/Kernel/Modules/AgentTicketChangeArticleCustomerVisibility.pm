@@ -185,8 +185,14 @@ sub Run {
         DynamicFields => 1,
     );
 
+    my $Key = 'IsVisibleForCustomer';
+    if ( $Self->{Subaction} eq 'Toggle' ) {
+        $Self->{Subaction} = 'ChangeVisibility';
+
+        $GetParam{$Key} = $Article{$Key} ? 0 : 1;
+    }
+
     if ( $Self->{Subaction} eq 'ChangeVisibility' && $GetParam{ArticleID} && !%DynamicFieldError ) {
-        my $Key               = 'IsVisibleForCustomer';
         my $VisibilityChanged = ( $GetParam{$Key} == $Article{$Key} ) ? 0 : 1;
         my $Success           = $VisibilityChanged ? 0 : 1;
 

@@ -82,4 +82,14 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="ChangeArticleCustomerVisibility::Type" Required="0" Valid="1">
+        <Description Translatable="1">Determines if a dialog is shown to change the visibility or if a plain link is used.</Description>
+        <Navigation>Core::ChangeArticleCustomerVisibility</Navigation>
+        <Value>
+            <Item ValueType="Select" SelectedID="dialog">
+                <Item ValueType="Option" Value="dialog" Translatable="1">Dialog</Item>
+                <Item ValueType="Option" Value="link" Translatable="1">Simple Link</Item>
+            </Item>
+        </Value>
+    </Setting>
 </otrs_config>
