@@ -11,7 +11,11 @@ package Kernel::Output::HTML::FilterElementPost::ChangeArticleCustomerVisibility
 use strict;
 use warnings;
 
-our @ObjectDependencies = (
+our @ObjectDependencies = qw(
+    Kernel::Config
+    Kernel::Language
+    Kernel::Output::HTML::Layout
+    Kernel::System::Web::Request
 );
 
 sub new {
@@ -37,19 +41,32 @@ sub Run {
 
     my @ArticleIDs = ${ $Param{Data} } =~ m{<a \s name="Article(\d+)"}xms;
 
-    ${ $Param{Data} } =~ s{ ( <a \s name="Article(\d+)" .*? <ul \s class="Actions"> ) \s* <li[^>]*?>}{$1 . $Self->__Linkify( $Baselink, $TicketID, $2, $Title ) . '<li>';}exmsg;
+    ${ $Param{Data} } =~ s{ ( <a \s name="Article(\d+)" .*? <ul \s class="Actions"> ) \s+ <li([^>]*?)>}{$1 . $Self->__Linkify( $Baselink, $TicketID, $2, $Title, $3 ) . '<li>';}exmsg;
 
     return 1;
 }
 
 sub __Linkify {
-    my ($Self, $Baselink, $TicketID, $ArticleID, $Title ) = @_;
+    my ($Self, $Baselink, $TicketID, $ArticleID, $Title, $Attribute ) = @_;
+
+    return '' if $Attribute =~ m{ChangeArticleCustomerVisibility};
+
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $Type         = $ConfigObject->Get('ChangeArticleCustomerVisibility::Type') || 'dialog';
 
     my $Link = qq~
         <li class="ChangeArticleCustomerVisibilityLink">
             <a href="${Baselink}Action=AgentTicketChangeArticleCustomerVisibility;TicketID=$TicketID;ArticleID=$ArticleID" title="$Title" class="AsPopup Popup_Type_TicketAction">$Title</a>
         </li>
     ~;
+
+    if ( $Type eq 'link' ) {
+        $Link = qq~
+            <li class="ChangeArticleCustomerVisibilityLink">
+                <a href="${Baselink}Action=AgentTicketChangeArticleCustomerVisibility;TicketID=$TicketID;ArticleID=$ArticleID;Subaction=Toggle" title="$Title">$Title</a>
+            </li>
+        ~;
+    }
 
     return $Link;
 }
