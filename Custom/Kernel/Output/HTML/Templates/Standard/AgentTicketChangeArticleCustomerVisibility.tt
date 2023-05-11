@@ -18,35 +18,36 @@
                 [% Translate("Change Article Visibility") | html %]
             </h1>
             <p>
-                <a class="CancelClosePopup" href="#">[% Translate("Cancel & close window") | html %]</a>
+                <a class="CancelClosePopup  btn-cancel-ghost btn-main btn-width-md" href="#">[% Translate("Cancel") | html %]</a>
             </p>
         </div>
         <div class="Content">
 
-            <fieldset class="TableLike FixedLabel">
-                <div class="Row">
-                    <label for="IsVisibleForCustomer">[% Translate("Is visible for customer") | html %]:</label>
-                    <div class="Field">
-                        <input type="checkbox" name="IsVisibleForCustomer" id="IsVisibleForCustomer"
-                            [% IF Data.IsVisibleForCustomer %]checked="checked" [% END %]/>
+            <fieldset class="TableLike FixedLabel card-item-wrapper">
+                <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
+                    <div>
+                        <label for="IsVisibleForCustomer">[% Translate("Is visible for customer") | html %]:</label>
+                        <div class="Field">
+                            <input type="checkbox" name="IsVisibleForCustomer" id="IsVisibleForCustomer"
+                                [% IF Data.IsVisibleForCustomer %]checked="checked" [% END %]/>
+                        </div>
                     </div>
-                    <div class="Clear"></div>
-                </div>
 
 [% RenderBlockStart("DynamicField") %]
-                        <div class="Row Row_DynamicField_[% Data.Name | html %]">
+                    <div>
                         [% Data.Label %]
                             <div class="Field">
                             [% Data.Field %]
                             </div>
                             <div class="Clear"></div>
                         </div>
+                    </div>
 [% RenderBlockEnd("DynamicField") %]
 
             </fieldset>
         </div>
         <div class="Footer">
-            <button class="Primary" id="submitRichText" accesskey="g" title="[% Translate("Submit") | html %] (g)" type="submit" value="[% Translate("Submit") | html %]">[% Translate("Submit") | html %]</button>
+            <button class="Primary  btn-primary btn-main btn-width-md" id="submitRichText" accesskey="g" title="[% Translate("Submit") | html %] (g)" type="submit" value="[% Translate("Submit") | html %]">[% Translate("Submit") | html %]</button>
         </div>
     </div>
 </form>
