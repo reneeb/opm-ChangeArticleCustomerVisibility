@@ -1,6 +1,6 @@
 {
     "name": "ChangeArticleCustomerVisibility",
-    "version": "10.0.2",
+    "version": "10.0.3",
     "product": "otobo",
     "framework": [
         "10.0.x",
@@ -8,7 +8,7 @@
     ],
     "vendor": {
         "name":  "Perl-Services.de",
-        "url": "http://www.perl-services.de"
+        "url": "https://www.perl-services.de"
     },
     "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007",
     "description" : {

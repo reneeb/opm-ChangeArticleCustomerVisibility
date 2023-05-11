@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otobo_package version="1.0">
-    <!-- GENERATED WITH OPM::Maker::Command::sopm (1.1.0) -->
+    <!-- GENERATED WITH OPM::Maker::Command::sopm (1.1.1) -->
     <Name>ChangeArticleCustomerVisibility</Name>
-    <Version>10.0.2</Version>
+    <Version>10.0.3</Version>
     <Framework>10.0.x</Framework>
     <Framework>10.1.x</Framework>
     <Vendor>Perl-Services.de</Vendor>
-    <URL>http://www.perl-services.de</URL>
+    <URL>https://www.perl-services.de</URL>
     <Description Lang="de">Sichtbarkeit für Kunden von Artikeln ändern.</Description>
     <Description Lang="en">Change visibility of articles for customers.</Description>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
