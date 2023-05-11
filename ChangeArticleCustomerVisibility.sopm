@@ -16,9 +16,15 @@
     <Filelist>
         <File Permission="644" Location="Custom/Kernel/Modules/AgentTicketChangeArticleCustomerVisibility.pm" />
         <File Permission="644" Location="Custom/Kernel/Output/HTML/ArticleAction/AgentTicketChangeArticleCustomerVisibility.pm" />
-        <File Permission="644" Location="Custom/Kernel/Output/HTML/FilterElementPost/ChangeArticleCustomerVisibility.pm" />
         <File Permission="644" Location="Custom/Kernel/Output/HTML/Templates/Standard/AgentTicketChangeArticleCustomerVisibility.tt" />
         <File Permission="644" Location="Kernel/Config/Files/XML/ChangeArticleCustomerVisibility.xml" />
         <File Permission="644" Location="Kernel/Language/de_ChangeArticleCustomerVisibility.pm" />
+        <File Permission="644" Location="var/packagesetup/ChangeArticleCustomerVisibility.pm" />
     </Filelist>
+    <CodeInstall Type="post"><![CDATA[
+        $Kernel::OM->Get('var::packagesetup::' . $Param{Structure}->{Name}->{Content} )->CodeInstall();
+    ]]></CodeInstall>
+    <CodeUpgrade Type="post"><![CDATA[
+        $Kernel::OM->Get('var::packagesetup::' . $Param{Structure}->{Name}->{Content} )->CodeUpgrade();
+    ]]></CodeUpgrade>
 </otrs_package>
