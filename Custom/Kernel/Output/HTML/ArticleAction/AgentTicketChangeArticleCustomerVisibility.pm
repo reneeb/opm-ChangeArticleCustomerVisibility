@@ -43,11 +43,6 @@ sub CheckAccess {
         }
     }
 
-    # check basic conditions
-    if ( $Param{ChannelName} eq 'Internal' ) {
-        return;
-    }
-
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
     # check if module is registered

@@ -14,5 +14,12 @@
     "description" : {
         "en": "Change visibility of articles for customers.",
         "de": "Sichtbarkeit für Kunden von Artikeln ändern."
-    }
+    },
+    "code" : [
+        { "type" : "Install" },
+        { "type" : "Upgrade" }
+    ],
+    "exclude_files" : [
+        "doc/ChangeArticleCustomerVisibility.json"
+    ]
 }
