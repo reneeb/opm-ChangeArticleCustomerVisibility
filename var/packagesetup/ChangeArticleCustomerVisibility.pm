@@ -92,6 +92,8 @@ run the code upgrade part
 sub CodeUpgrade {
     my ( $Self, %Param ) = @_;
 
+    $Self->_DoSysConfigChanges();
+
     return 1;
 }
 
