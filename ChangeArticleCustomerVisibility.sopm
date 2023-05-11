@@ -2,7 +2,7 @@
 <otrs_package version="1.0">
     <!-- GENERATED WITH OPM::Maker::Command::sopm (1.1.1) -->
     <Name>ChangeArticleCustomerVisibility</Name>
-    <Version>7.0.1</Version>
+    <Version>7.0.2</Version>
     <Framework>7.0.x</Framework>
     <Vendor>Perl-Services.de</Vendor>
     <URL>https://www.perl-services.de</URL>
